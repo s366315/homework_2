@@ -1,27 +1,35 @@
 package org.hillel.homework_1.service;
 
-import org.hillel.homework_1.Journey;
 import org.hillel.homework_1.persistence.entity.JourneyEntity;
 import org.hillel.homework_1.persistence.repository.JourneyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
-@Service("transactionalJourneyService")
-public class TransactionalJourneyService implements JourneyService {
+@Service
+public class TransactionalJourneyService implements JourneyService<JourneyEntity> {
 
     @Autowired
-    @Qualifier("journeyRepository")
     private JourneyRepository journeyRepository;
 
     @Override
-    public Collection<Journey> find(String stationFrom, String stationTo, LocalDate dateFrom, LocalDate dateTo) throws SQLException {
-        return null;
+    public Collection find(String stationFrom, String stationTo, LocalDate dateFrom, LocalDate dateTo) {
+        List<JourneyEntity> out = new ArrayList<>();
+        for (JourneyEntity item : journeyRepository.getJourneys()) {
+            if (item.getDeparture().equals(dateFrom) &&
+                    item.getArrival().equals(dateTo) &&
+                    item.getStationFrom().equals(stationFrom) &&
+                    item.getStationTo().equals(stationTo)) {
+                out.add(item);
+            }
+        }
+        return Collections.unmodifiableList(out);
     }
 
     @Transactional

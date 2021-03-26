@@ -6,7 +6,7 @@ import org.hillel.homework_1.persistence.entity.JourneyEntity;
 import java.time.LocalDate;
 import java.util.*;
 
-public class InMemoryJourneyServiceImpl implements JourneyService {
+public class InMemoryJourneyServiceImpl implements JourneyService<Journey> {
 
     private Map<String, List<Journey>> storage = new HashMap<>();
     private final String id;
@@ -44,7 +44,7 @@ public class InMemoryJourneyServiceImpl implements JourneyService {
     }
 
     @Override
-    public int createJourney(JourneyEntity entity) {
+    public int createJourney(Journey entity) {
         return 0;
     }
 }

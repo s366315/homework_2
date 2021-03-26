@@ -15,7 +15,6 @@ public class TicketClient {
 //    private JourneyService journeyService;
 
     @Autowired
-    @Qualifier(value = "transactionalJourneyService")
     private JourneyService transactionalJourneyService;
 
    /* public TicketClient(JourneyService journeyService) {
@@ -27,6 +26,6 @@ public class TicketClient {
     }
 
     public Collection<Journey> find(String stationFrom, String stationTo, LocalDate departure, LocalDate arrival) throws SQLException {
-        return null;// journeyService.find(stationFrom, stationTo, departure, arrival);
+        return transactionalJourneyService.find(stationFrom, stationTo, departure, arrival);
     }
 }

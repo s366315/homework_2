@@ -5,8 +5,10 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
+import java.util.List;
 
-@Repository("journeyRepository")
+@Repository
 public class JourneyRepository {
 
     @PersistenceContext
@@ -15,5 +17,11 @@ public class JourneyRepository {
     public int create(final JourneyEntity journeyEntity) {
         entityManager.persist(journeyEntity);
         return journeyEntity.getId();
+    }
+
+    public List<JourneyEntity> getJourneys() {
+       /* List<JourneyEntity> out = entityManager.createQuery("select a from homework_1").getResultList();
+        System.out.println();*/
+        return new ArrayList<>();
     }
 }

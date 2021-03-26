@@ -20,7 +20,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@PropertySource({"application.properties", "database.properties"})
+@PropertySource({"database.properties"})
 @EnableTransactionManagement
 public class DatabaseConfig {
 
@@ -47,7 +47,7 @@ public class DatabaseConfig {
         emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         Properties properties = new Properties();
         properties.put("hibernate.dialect", PostgreSQL10Dialect.class.getName());
-        properties.put("hibernate.hbm2dll.auto", "create-drop");
+        properties.put("hibernate.hbm2dll.auto", "update");
         properties.put("hibernate.show_sql", "true");
         emf.setJpaProperties(properties);
         return emf;

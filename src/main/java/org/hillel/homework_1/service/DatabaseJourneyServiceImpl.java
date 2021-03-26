@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
-public class DatabaseJourneyServiceImpl implements JourneyService {
+public class DatabaseJourneyServiceImpl implements JourneyService<Journey> {
 
     private final JourneyRepo repo;
 
@@ -37,7 +37,7 @@ public class DatabaseJourneyServiceImpl implements JourneyService {
     }
 
     @Override
-    public int createJourney(JourneyEntity entity) {
+    public int createJourney(Journey entity) {
         return 0;
     }
 }
