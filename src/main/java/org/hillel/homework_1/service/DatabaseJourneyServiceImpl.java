@@ -1,6 +1,7 @@
 package org.hillel.homework_1.service;
 
 import org.hillel.homework_1.Journey;
+import org.hillel.homework_1.persistence.entity.JourneyEntity;
 import org.hillel.homework_1.repo.JourneyRepo;
 import org.hillel.homework_1.repo.JourneyRepoImpl;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,10 @@ public class DatabaseJourneyServiceImpl implements JourneyService {
             }
         }
         return Collections.unmodifiableList(out);
+    }
+
+    @Override
+    public int createJourney(JourneyEntity entity) {
+        return 0;
     }
 }

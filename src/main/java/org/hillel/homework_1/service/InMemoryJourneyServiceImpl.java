@@ -1,6 +1,7 @@
 package org.hillel.homework_1.service;
 
 import org.hillel.homework_1.Journey;
+import org.hillel.homework_1.persistence.entity.JourneyEntity;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -40,5 +41,10 @@ public class InMemoryJourneyServiceImpl implements JourneyService {
             }
         }
         return Collections.unmodifiableList(out);
+    }
+
+    @Override
+    public int createJourney(JourneyEntity entity) {
+        return 0;
     }
 }
