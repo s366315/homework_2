@@ -4,7 +4,6 @@ import org.hillel.homework_1.persistence.entity.JourneyEntity;
 import org.hillel.homework_1.persistence.repository.JourneyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import java.util.List;
 public class TransactionalJourneyService implements JourneyService<JourneyEntity> {
 
     @Autowired
-    private JourneyRepository journeyRepository;
+    private JourneyRepository<JourneyEntity> journeyRepository;
 
     @Override
     public Collection find(String stationFrom, String stationTo, LocalDate dateFrom, LocalDate dateTo) {

@@ -3,7 +3,6 @@ package org.hillel.homework_1.persistence.entity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -16,7 +15,7 @@ public class JourneyEntity {
     @Getter
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
-    private Integer id;
+    private int id;
 
     @Getter
     @Setter
