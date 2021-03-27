@@ -2,16 +2,19 @@ package org.hillel.homework_1.persistence.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "journey")
+@ToString
+@Table(name = "homework_1")
 public class JourneyEntity {
     @Id
     @Getter
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     private Integer id;
 

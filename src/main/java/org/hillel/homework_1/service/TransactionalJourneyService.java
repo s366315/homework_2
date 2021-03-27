@@ -32,7 +32,7 @@ public class TransactionalJourneyService implements JourneyService<JourneyEntity
         return Collections.unmodifiableList(out);
     }
 
-    @Transactional
+
     @Override
     public int createJourney(final JourneyEntity entity) {
         return journeyRepository.create(entity);

@@ -49,6 +49,9 @@ public class DatabaseConfig {
         properties.put("hibernate.dialect", PostgreSQL10Dialect.class.getName());
         properties.put("hibernate.hbm2dll.auto", "update");
         properties.put("hibernate.show_sql", "true");
+        properties.put("hibernate.c3p0.min_size", "30");
+        properties.put("hibernate.c3p0.max_size", "150");
+        properties.put("hibernate.c3p0.timeout", "300");
         emf.setJpaProperties(properties);
         return emf;
     }

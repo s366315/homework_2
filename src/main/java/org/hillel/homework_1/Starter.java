@@ -16,15 +16,12 @@ public class Starter {
 
         JourneyEntity journeyEntity = new JourneyEntity();
         journeyEntity.setStationFrom("Kiev");
-        journeyEntity.setArrival(LocalDate.now().plusDays(1));
+        journeyEntity.setArrival(LocalDate.now().plusDays(2));
         journeyEntity.setDeparture(LocalDate.now());
         journeyEntity.setStationTo("Jmerinka");
 
-        ticketClient.createJourney(journeyEntity);
+        System.out.println("journeyEntity was inserted with id: " + ticketClient.createJourney(journeyEntity));
 
-//        ticketClient.find("Odessa", "Kiev", LocalDate.now().minusDays(2), LocalDate.now().minusDays(1));
-
-//        System.out.println(journeyService.find("Odessa", "Kiev", LocalDate.now().minusDays(2), LocalDate.now().minusDays(1)));
-//        System.out.println(journeyService.find("Lviv", "Odessa", LocalDate.now().minusDays(9), LocalDate.now()));
+        System.out.println(ticketClient.find("Kiev", "Jmerinka", LocalDate.now().minusDays(1), LocalDate.now()));
     }
 }
