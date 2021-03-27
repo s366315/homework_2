@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import java.time.LocalDate;
 
+@Deprecated
 @ToString
 @EqualsAndHashCode
 public class Journey {
