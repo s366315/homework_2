@@ -30,10 +30,12 @@ public class DatabaseConfig {
     @Bean
     public DataSource dataSource() {
         HikariConfig config = new HikariConfig();
-        config.setPassword(environment.getProperty("hibernate.connection.password"));
-        config.setUsername(environment.getProperty("hibernate.connection.username"));
-        config.setJdbcUrl(environment.getProperty("hibernate.connection.url"));
-        config.addDataSourceProperty("databaseName", environment.getProperty("hibernate.database.name"));
+        config.setUsername(environment.getProperty("database.username"));
+        config.setPassword(environment.getProperty("database.password"));
+        config.setJdbcUrl(environment.getProperty("database.url"));
+        config.addDataSourceProperty("databaseName", environment.getProperty("database.name"));
+        config.setMinimumIdle(30);
+        config.setMaximumPoolSize(150);
         config.setDataSourceClassName(PGSimpleDataSource.class.getName());
 
         return new HikariDataSource(config);
@@ -43,15 +45,13 @@ public class DatabaseConfig {
     public LocalContainerEntityManagerFactoryBean emf(DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(dataSource);
-        emf.setPackagesToScan("org.hillel.homework_1.persistence.entity");
+        emf.setPackagesToScan("org.hillel.homework.persistence.entity");
         emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         Properties properties = new Properties();
         properties.put("hibernate.dialect", PostgreSQL10Dialect.class.getName());
-        properties.put("hibernate.hbm2dll.auto", "update");
+        properties.put("hibernate.hbm2dll.auto", "create");
         properties.put("hibernate.show_sql", "true");
-        properties.put("hibernate.c3p0.min_size", "30");
-        properties.put("hibernate.c3p0.max_size", "150");
-        properties.put("hibernate.c3p0.timeout", "300");
+        properties.put("javax.persistence.query.timeout", "300000");
         emf.setJpaProperties(properties);
         return emf;
     }
